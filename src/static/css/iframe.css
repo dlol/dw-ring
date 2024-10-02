@@ -1,0 +1,79 @@
+@import url(colors.css);
+
+@font-face {
+    font-family: "Cascadia Code";
+    src: url('/fonts/cascadiacode.otf');
+}
+
+@font-face {
+    font-family: "Super Eurobeat";
+    src: url('/fonts/seb.ttf');
+}
+
+* {
+    font-family: "Cascadia Code";
+}
+
+.webring-title {
+    font-family: "Super Eurobeat";
+    font-size: 14px;
+}
+
+body, html {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+#dw-ring {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 1px dashed var(--gray-200);
+    color: var(--gray-200);
+    background-color: var(--gray-900);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    backdrop-filter: blur(5px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%), url('/img/iframe-bg.jpg');
+    background-size: 100% 100%;
+}
+
+#dw-ring .small-text {
+    font-size: 12px;
+}
+
+#dw-ring a {
+    color: var(--gray-200);
+    transition: .1s;
+}
+
+#dw-ring a:hover {
+    color: var(--link-hover);
+    transition: .1s;
+}
+
+#dw-ring table tr td {
+    padding: 0 10px;
+}
+
+#dw-ring .webring-prev {
+    text-align: right;
+}
+
+#dw-ring .webring-info {
+    text-align: center;
+}
+
+#dw-ring .webring-next {
+    text-align: left;
+}
+
+#dw-ring .webring-links {
+    font-size: small;
+}

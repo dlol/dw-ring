@@ -1,0 +1,375 @@
+@import url(colors.css);
+
+@font-face {
+    font-family: "Cascadia Code";
+    src: url('/fonts/cascadiacode.otf');
+}
+
+@font-face {
+    font-family: "Super Eurobeat";
+    src: url('/fonts/seb.ttf');
+}
+
+* {
+    font-family: "Cascadia Code";
+    scrollbar-width:thin;
+    scrollbar-color: var(--gray-200) transparent
+}
+
+::-webkit-scrollbar { width: 5px; }
+
+::-webkit-scrollbar-track { background-color: transparent; }
+
+::-webkit-scrollbar-thumb { background-color: var(--gray-200); }
+
+p, blockquote {
+    color: var(--gray-200);
+}
+
+a, b, p.copyright, section h2, section h3, section h1 {
+    color: var(--gray-100);
+}
+
+a {
+    transition: .2s;
+}
+
+a:hover {
+    transition: .2s;
+    color: var(--link-hover);
+}
+
+ul.websites {
+    margin: 0;
+    padding: 0;
+}
+
+li.website {
+    border: solid var(--list-border) 2px;
+    border-left-width: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    height: 250px;
+    position: relative;
+}
+
+.website-title * {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+img.website-thumb {
+    height: 100%;
+    width: auto;
+    float: right;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+a.website-thumb {
+    font-size: 0;
+}
+
+ul.websites > li {
+    overflow: hidden;
+}
+
+span.website-id {
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+.website-title {
+    margin-top: 0px;
+}
+
+.website-archive {
+    bottom: 5px;
+    position: absolute;
+}
+
+.website-archive hr {
+    color: var(--gray-200);
+}
+
+img.website-favicon {
+    height: 16px;
+    width: 16px;
+    position: relative;
+    bottom: -1px;
+}
+
+.website-button > img, .website-desc > span {
+    margin-left: 10px;
+    display: block;
+}
+
+.status-icon {
+    margin-right: 6px;
+    height: 15px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.status-icon > img {
+    position: relative;
+    bottom: -2px;
+    height: 16px;
+    width: 16px;
+}
+
+.status-icon > span {
+    position: absolute;
+    visibility: hidden;
+    background-color: var(--gray-900);
+    color: var(--gray-100);
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    white-space: nowrap;
+}
+
+.status-icon:hover > span {
+    visibility: visible;
+}
+
+body {
+    margin: 16px;
+    background:
+        linear-gradient(180deg, rgba(0, 12, 29, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%),
+        url('/img/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    border: solid var(--border-color) 2px;
+    width: min-content;
+}
+
+header {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    background-color: var(--gray-900);
+    background:
+        radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+        url('/img/header-banner.jpg') no-repeat center;
+}
+
+nav {
+    height: 35px; 
+    background-color: var(--section-contrast);
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    padding: 0 10px;
+    margin: 0;
+    list-style-type: none;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+main {
+    width: 60vw;
+    min-width: 375px;
+    max-width: 1100px;
+    margin: 0;
+}
+
+header div {
+    position: absolute;
+    color: var(--gray-100);
+    left: 5px;
+    bottom: 0px;
+}
+
+header div h1 {
+    margin: 0 0 -20px 0;
+    font-size: 50px;
+    font-family: "Super Eurobeat";
+}
+
+header div p {
+    margin: 0;
+    font-size: 22px;
+}
+
+section {
+    padding: 5px 10px;
+    background-color: var(--section-background);
+    min-height: 45vh;
+}
+
+section h2, section h1 {
+    margin: 5px 0;
+}
+
+footer {
+    position: relative;
+    background-color: var(--section-contrast);
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+}
+
+p.webring-info *, hr {
+    color: var(--gray-200);
+}
+
+#webring-members > span {
+    font-size: 12px;
+}
+
+p.webring-info a:hover {
+    transition: .2s;
+    color: #7f849c;
+}
+
+p.webring-info {
+    color: var(--gray-400);
+    font-size: 12px;
+    margin: 0;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+p.webring-info b, p.webring-info a {
+    color: var(--gray-400);
+}
+
+p.last-gen, p.last-gen * {
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+footer img {
+    max-width: 100%;
+}
+
+ul {
+    color: var(--gray-200);
+}
+
+ul > li::marker {
+    color: var(--gray-100);
+}
+
+ul > li::marker {
+    line-height: 25px;
+}
+
+ul.error {
+    color: var(--gray-200);
+}
+
+ul.error > li::marker {
+    color: var(--gray-100);
+}
+
+ul.error > li::marker {
+    line-height: 40px;
+}
+
+code {
+    font-size: 14px;
+    background-color: var(--gray-900);
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 950px) {
+    img.website-favicon, .status-icon img {
+        height: 14px;
+        width: 14px;
+    }
+
+    span.website-id {
+        font-size: 10px;
+    }
+
+    .website-title * {
+        font-size: 14px
+    }
+    
+    li.website {
+        font-size: 12px;
+    }
+
+    p.webring-info {
+        color: var(--gray-400);
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    p.copyright {
+        font-size: 12px;
+    }
+
+    header div h1 {
+        margin: 0 0 -4px 0;
+        font-size: 30px;
+    }
+    
+    header div p {
+        font-size: 16px;
+    }
+
+    body {
+        width: min-content;
+        margin: 0;
+    }
+
+    header {
+        height: 180px;
+    }
+
+    li.website {
+        height: 200px;
+    }
+
+    img.website-thumb {
+        display: none;
+    }
+}
+
+#waifu {
+    max-height: 600px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1600px), screen and (max-height: 840px) {
+    #waifu {
+        display: none;
+    }
+    body {
+        width: min-content;
+        margin: 2vw auto;
+    }
+    main {
+        width: 96vw;
+        min-width: 375px;
+        max-width: 1100px;
+    }
+}
+
+@media screen and (max-width: 385px) {
+    body {
+        margin: 0 auto;
+    }
+}

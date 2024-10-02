@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/iframe.css">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    </head>
+    <body>
+        <div id="dw-ring">
+            <%# if there simply isn't a website param it will render a special iframe with [first|last|random w/o check] buttons instead of the usual %>
+            <% if (!website) { %>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="webring-prev"><a target="_parent" href="/redirect?action=first">←first</a></td>
+                            <td class="webring-info">
+                                <span class="webring-title" title="<%= desc %>"><%= title %></span>
+                                <br>
+                                <span class="webring-links"><a target="_parent" href="/redirect?action=random">random site</a></span>
+                            </td>
+                            <td class="webring-next"><a target="_parent" href="/redirect?action=last">last→</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <%# if the website inserted isn't on the webring it will warn the user %>
+            <% } else if (!websites.some(site  => site.slug === website)) { %>
+                <table>
+                    <tr>
+                        <td class="webring-info small-text">You are not part of <%= title %>. <a target="_parent" href="/instructions">Instructions</a>.</td>
+                    </tr>
+                </table>
+
+            <%# if everything passes it will render the normal iframe you should embed on a site in the webring %>
+            <% } else { %>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="webring-prev"><a target="_parent" href="/redirect?website=<%= website %>&action=prev">←prev</a></td>
+                            <td class="webring-info">
+                                <span class="webring-title" title="<%= desc %>"><%= title %></span>
+                                <br>
+                                <span class="webring-links"><a target="_parent" href="/redirect?website=<%= website %>&action=random">random</a> | <a target="_parent" href="/">index</a></span>
+                            </td>
+                            <td class="webring-next"><a target="_parent" href="/redirect?website=<%= website %>&action=next">next→</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% } %>
+        </div>
+    </body>
+</html>

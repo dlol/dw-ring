@@ -1,0 +1,12 @@
+:root {
+    --list-border: #3d59a1;
+    --section-contrast: #1f2335;
+    --section-background: #24283b;
+    --link-hover: #a9b1d6;
+    --border-color: #1f2335;
+
+    --gray-100: #eeeeee;
+    --gray-200: #d9d7db;
+    --gray-400: #888888;
+    --gray-900: #000000;
+}

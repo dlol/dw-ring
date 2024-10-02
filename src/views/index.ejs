@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %> - Index</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <%- include('partials/meta') %>
+
+        <%- track %>
+
+        <%# I don't think there's a better way to do this... I don't think EJS works with css soo you know %>
+        <style>
+            <% websites.forEach((website, i) => { %>
+                <% if (fs.existsSync(`src/static/gen/thumbs/${website.slug}.jpg`)) { %>
+                    #website-id-<%= i %> {
+                        background:
+                            linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%),
+                            url('/gen/thumbs/<%= website.slug %>.jpg') no-repeat center;
+                        background-size: cover;
+                    }
+                <% } else { %>
+                    #website-id-<%= i %> {
+                        background:
+                            linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%),
+                            url('/img/placeholder/thumb.png') no-repeat center;
+                        background-size: cover;
+                    }
+                <% } %>
+            <% }) %>
+        </style>
+    </head>
+    <body>
+        <main>
+            <%- include('partials/header') %>
+            <%- include('partials/nav') %>
+            <%- include('partials/waifu') %>
+    
+            <section>
+
+                <%- long %>
+
+                <h2 id="webring-members" title="<%= websites.length %> members">Members<span> [<a data-umami-event="redirect random no check" href="/redirect?action=random">random</a>]</span></h2>
+
+                <ul class="websites">
+                    <% websites.forEach((website, i) => { %>
+                        <li class="website" id="website-id-<%= i %>">
+                            <% if (fs.existsSync(`src/static/gen/thumbs/${website.slug}.jpg`)) { %>
+                                <a data-umami-event="webring list clicked on <%= website.name %>" class="website-thumb" target="_blank" href="<%= website.url %>">
+                                    <img class="website-thumb" src="/gen/thumbs/<%= website.slug %>.jpg" alt="Thumbnail">
+                                </a>
+                            <% } else { %>
+                                <a data-umami-event="webring list clicked on <%= website.name %>" class="website-thumb" target="_blank" href="<%= website.url %>">
+                                    <img class="website-thumb" src="/img/placeholder/thumb.png" alt="Thumbnail">
+                                </a>
+                            <% } %>
+        
+                            <p class="website-title">
+                                <%# there are whitespaces, there's nothing I can really do to fix this shit %>
+                                <% if ((website.favicon && fs.existsSync(`src/static/gen/favis/${website.slug}.${website.favicon.split('.').pop()}`))) { %>
+                                    <img class="website-favicon" src="/gen/favis/<%= website.slug %>.<%= website.favicon.split('.').pop() %>" alt="?"><b title="<%= website.slug %>" class="website-name"><a data-umami-event="webring list clicked on <%= website.name %>" target="_blank" href="<%= website.url %>"><%= website.name %></a></b>
+                                <% } else { %>
+                                    <img class="website-favicon" src="/img/placeholder/favicon.png" alt="?"><b title="<%= website.slug %>" class="website-name"><a data-umami-event="webring list clicked on <%= website.name %>" target="_blank" href="<%= website.url %>"><%= website.name %></a></b>
+                                <% } %>
+                                
+                                <% if (websitesStatus[i].alive) { %>
+                                    <span class="status-icon">
+                                        <img alt="online" src="/img/icons/globe-green.svg">
+                                        <span>Online</span>
+                                    </span>
+                                    <% } else { %>
+                                    <span class="status-icon">
+                                        <img alt="offline" src="/img/icons/globe-red.svg">
+                                        <span>Offline</span>
+                                    </span>
+                                <% } %>
+                                
+                                <% if (websitesStatus[i].type) { %>
+                                    <span class="status-icon">
+                                        <img alt="configured" src="/img/icons/gear-green.svg">
+                                        <span>
+                                            Config type:
+                                            <%# this is horrifying %>
+                                            <% switch (websitesStatus[i].type) {
+                                                case 'both': %>
+                                                    iframe + manual links
+                                                    <% break
+                                                case 'manual': %>
+                                                    manual links
+                                                    <% break
+                                                case 'iframe': %>
+                                                    iframe
+                                                    <% break
+                                                default: %>
+                                                    error
+                                                    <% break
+                                            } %>
+                                        </span>
+                                    </span>
+                                <% } else if (websitesStatus[i].alive) { %>
+                                    <span class="status-icon">
+                                        <img alt="misconfigured" src="/img/icons/gear-red.svg">
+                                        <span>Misconfigured: no iframe or links found!</span>
+                                    </span>
+                                <% } %>
+                                
+                                <span class="website-id">(ID: #<%= i %>)</span>
+                            </p>
+                            
+                            <% if (website.desc) { %>
+                                <p class="website-desc">
+                                    <b>Description:</b><br>
+                                    <span><%= website.desc %></span>
+                                </p>
+                            <% } %>
+                                
+                            <% if (website.button && fs.existsSync(`src/static/gen/buttons/${website.slug}.${website.button.split('.').pop()}`)) { %>
+                                <p class="website-button">
+                                    <b>Button:</b><br>
+                                    <img alt="88x31 button" src="/gen/buttons/<%= website.slug %>.<%= website.button.split('.').pop() %>">
+                                </p>
+                            <% } %>
+        
+                            <% if (website.join) { %>
+                                <p class="website-join"><b>Join date:</b> <%= website.join %></p>
+                            <% } %>
+
+                            <% if (!websitesStatus[i].alive) { %>
+                                <div class="website-archive">
+                                    <hr>
+                                    <a target="_blank" href="https://web.archive.org/web/*/<%= website.url %>">Search on archive.org</a>
+                                </div>
+                            <% } %>
+                        </li>
+                    <% }) %>
+
+                    <% let date = new Date(genDate) %>
+                    <p class="last-gen"><b>Images last generated on:</b> <%= getPrettyDate(date) %></p>
+                </ul>
+            </section>
+
+            <%- include('partials/footer') %>
+        </main>
+    </body>
+</html>

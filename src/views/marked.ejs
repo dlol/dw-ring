@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %> - About</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <%- include('partials/meta') %>
+
+        <%- track %>
+    </head>
+    <body>
+        <main>
+            <%- include('partials/header') %>
+            <%- include('partials/nav') %>
+            <%- include('partials/waifu') %>
+
+            <section>
+                <%- html %>
+            </section>
+
+            <%- include('partials/footer') %>
+        </main>
+    </body>
+</html>
