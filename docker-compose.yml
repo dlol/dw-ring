@@ -1,0 +1,7 @@
+services:
+  backrest:
+    image: dw-ring:latest
+    container_name: dw-ring
+    restart: unless-stopped
+    ports:
+      - 8080:8080

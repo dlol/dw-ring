@@ -1,0 +1,6 @@
+yarn.lock
+node_modules
+src/static/gen
+Dockerfile
+.dockerignore
+docker-compose.yml

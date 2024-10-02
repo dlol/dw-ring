@@ -10,7 +10,11 @@ async function makeThumbnailAll(websites, overwrite) {
     if (!fs.existsSync(thumbsDir)) fs.mkdirSync(thumbsDir, { recursive: true })
 
     try {
-        let browser = await puppeteer.launch({ defaultViewport: { width: 1920, height: 1080, } })
+        let browser = await puppeteer.launch({
+            defaultViewport: { width: 1920, height: 1080, },
+            args: process.getuid && process.getuid() === 0 ? ['--no-sandbox'] : []
+        })
+
         let page = await browser.newPage()
 
         for (let i in websites) {
