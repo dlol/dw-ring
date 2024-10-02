@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.konakona.moe/diowo/dw-ring"
+    "url": "https://git.konakona.moe/dw/dw-ring"
   },
   "devDependencies": {
     "yarn": "^1.22.22"
