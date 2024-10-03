@@ -1,5 +1,5 @@
 services:
-  backrest:
+  dw-ring:
     image: dw-ring:latest
     container_name: dw-ring
     restart: unless-stopped
