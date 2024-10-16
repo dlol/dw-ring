@@ -1,9 +1,9 @@
 port: 8080
 title: dw-ring
 desc: dw-ring webring server demonstration
-copyright: All Rights Reserved
+copyright: GNU PUBLIC LICENSE VERSION 3
 permalink: https://ring.konakona.moe
-track: 
+track: ""
 long: >-
       ## Welcome
 
@@ -12,12 +12,11 @@ long: >-
       checks if websites are online before sending the user there among other
       cool features like automatic thumbnail generation.
 websites:
-  - name: KONAKONA.MOE
-    slug: konakona
+  - name: diogo's website
+    slug: diogo
     url: https://konakona.moe
     desc: >-
-      diogo's (“dw”) autistic outlet: *NIX and NT blog (soon™), self-hosting, photos
-      and etc.
-    button: https://konakona.moe/88x31/konakona.png
+      diogo's personal blog about self-hosting, photos and etc.
+    button: https://konakona.moe/88x31/debian-powered.gif
     favicon: https://konakona.moe/favicon.ico
     join: "2024"

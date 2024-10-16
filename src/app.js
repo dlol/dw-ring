@@ -8,7 +8,7 @@ const getPrettyDate = require('./lib/getPrettyDate')
 const downloadAssetAll = require('./lib/downloadAssetAll')
 const makeThumbnailAll = require('./lib/makeThumbnailAll')
 
-const config = yaml.load(fs.readFileSync('config.yml', 'utf8'))
+const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'config/config.yml' : 'config.yml', 'utf8'))
 const port = config.port
 const websites = config.websites
 

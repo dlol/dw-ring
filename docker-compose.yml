@@ -3,5 +3,7 @@ services:
     image: dw-ring:latest
     container_name: dw-ring
     restart: unless-stopped
+    volumes:
+      - ./config:/dw-ring/config
     ports:
       - 8080:8080

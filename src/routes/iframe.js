@@ -4,7 +4,7 @@ const yaml = require('js-yaml')
 const getPrettyDate = require('../lib/getPrettyDate')
 
 
-const config = yaml.load(fs.readFileSync('config.yml', 'utf8'))
+const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'config/config.yml' : 'config.yml', 'utf8'))
 const title = config.title
 const websites = config.websites
 const desc = config.desc

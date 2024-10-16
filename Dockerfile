@@ -49,4 +49,6 @@ COPY . .
 
 RUN yarn
 
-CMD ["yarn", "start"]
+RUN chmod +x /dw-ring/entrypoint.sh
+
+ENTRYPOINT ["/bin/sh", "-c", "/dw-ring/entrypoint.sh"]

@@ -5,7 +5,7 @@ const getPrettyDate = require('../lib/getPrettyDate')
 
 
 const version = JSON.parse(fs.readFileSync('package.json')).version
-const config = yaml.load(fs.readFileSync('config.yml', 'utf8'))
+const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'config/config.yml' : 'config.yml', 'utf8'))
 const title = config.title
 const desc = config.desc
 const permalink = config.permalink

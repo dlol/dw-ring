@@ -4,7 +4,7 @@ const fs = require('fs')
 const yaml = require('js-yaml')
 
 
-const config = yaml.load(fs.readFileSync('config.yml', 'utf8'))
+const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'config/config.yml' : 'config.yml', 'utf8'))
 const permalink = config.permalink
 
 async function websiteCheck(url, slug) {
