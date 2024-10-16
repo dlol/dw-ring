@@ -13,6 +13,7 @@ const title = config.title
 const websites = config.websites
 const permalink = config.permalink
 const copyright = config.copyright
+const startYear = config.startYear
 const desc = config.desc
 const long = marked.parse(config.long)
 const track = config.track
@@ -32,6 +33,7 @@ router.get('/', async (req, res) => {
         genDate,
         permalink,
         copyright,
+        startYear,
         websitesStatus,
         version,
         startTime,

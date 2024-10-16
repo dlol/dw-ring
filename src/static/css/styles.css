@@ -94,6 +94,7 @@ span.website-id {
 }
 
 img.website-favicon {
+    margin-right: 5px;
     height: 16px;
     width: 16px;
     position: relative;

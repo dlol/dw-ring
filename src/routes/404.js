@@ -10,6 +10,7 @@ const title = config.title
 const desc = config.desc
 const permalink = config.permalink
 const copyright = config.copyright
+const startYear = config.startYear
 const track = config.track
 
 router.use(async (req, res) => {
@@ -28,6 +29,7 @@ router.use(async (req, res) => {
         version,
         permalink,
         copyright,
+        startYear,
         track
     })
 })

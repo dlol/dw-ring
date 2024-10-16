@@ -4,6 +4,7 @@ services:
     container_name: dw-ring
     restart: unless-stopped
     volumes:
+      - ./static:/dw-ring/src/static
       - ./config:/dw-ring/config
     ports:
       - 8080:8080

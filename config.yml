@@ -2,6 +2,7 @@ port: 8080
 title: dw-ring
 desc: dw-ring webring server demonstration
 copyright: GPLv3
+startYear: 2024
 permalink: https://ring.konakona.moe
 track: ""
 long: >-

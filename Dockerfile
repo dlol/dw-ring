@@ -46,6 +46,8 @@ RUN apt-get autoclean -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /dw-ring
 COPY . .
+RUN mkdir static-tmp
+RUN mv /dw-ring/src/static/* /dw-ring/static-tmp
 
 RUN yarn
 

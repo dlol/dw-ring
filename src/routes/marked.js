@@ -11,6 +11,7 @@ const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'co
 const title = config.title
 const permalink = config.permalink
 const copyright = config.copyright
+const startYear = config.startYear
 const desc = config.desc
 const track = config.track
 
@@ -29,6 +30,7 @@ router.get('/about', async (req, res) => {
         version,
         permalink,
         copyright,
+        startYear,
         track
     })
 })
