@@ -10,19 +10,15 @@ const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'co
 const websites = config.websites
 
 
-
-// docker exec dw-ring node src/dlassets.js <--gen> <--overwrite>
+// docker exec dw-ring node src/dlassets.js <--docker> <--overwrite>
 
 let overwrite = process.argv.includes('--overwrite')
 
-if (process.argv.includes('--gen') && !overwrite)
+if (!overwrite)
     console.log(`${getPrettyDate(new Date())}: '--gen' passed, (re)generating assets.`)
 
 if (overwrite)
     console.log(`${getPrettyDate(new Date())}: '--overwrite' passed, (re)generating and overwriting assets.`)
-
-if (!fs.existsSync(path.join('src/static/gen/')) && !process.argv.includes('--gen'))
-    console.log(`${getPrettyDate(new Date())}: 'src/static/gen/' folder doesn't exist, creating it and downloading assets, pass '--gen' to regenerate.`)
 
 downloadAssetAll(websites.map(site => site.favicon ? { url: site.favicon, slug: site.slug } : null), 'favis',   overwrite)
 downloadAssetAll(websites.map(site => site.button  ? { url: site.button, slug: site.slug  } : null), 'buttons', overwrite)
