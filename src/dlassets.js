@@ -1,4 +1,3 @@
-const path = require('path')
 const fs = require('fs')
 const yaml = require('js-yaml')
 
@@ -10,15 +9,15 @@ const config = yaml.load(fs.readFileSync(process.argv.includes('--docker') ? 'co
 const websites = config.websites
 
 
+// node src/dlassets.js <--overwrite>
 // docker exec dw-ring node src/dlassets.js <--docker> <--overwrite>
 
 let overwrite = process.argv.includes('--overwrite')
-
-if (!overwrite)
-    console.log(`${getPrettyDate(new Date())}: '--gen' passed, (re)generating assets.`)
-
-if (overwrite)
+if (overwrite) {
     console.log(`${getPrettyDate(new Date())}: '--overwrite' passed, (re)generating and overwriting assets.`)
+} else {
+    console.log(`${getPrettyDate(new Date())}: generating assets for new sites.`)
+}
 
 downloadAssetAll(websites.map(site => site.favicon ? { url: site.favicon, slug: site.slug } : null), 'favis',   overwrite)
 downloadAssetAll(websites.map(site => site.button  ? { url: site.button, slug: site.slug  } : null), 'buttons', overwrite)
@@ -32,4 +31,3 @@ fs.writeFile('src/static/gen/date.log', now, err => {
         console.log(`${getPrettyDate(new Date())}: Wrote last time generated to disk!`, now)
     }
 })
-

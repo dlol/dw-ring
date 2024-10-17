@@ -50,6 +50,7 @@ router.get('/help', async (req, res) => {
         version,
         permalink,
         copyright,
+        startYear,
         track
     })
 })
@@ -69,6 +70,7 @@ router.get('/join', async (req, res) => {
         version,
         permalink,
         copyright,
+        startYear,
         track
     })
 })
