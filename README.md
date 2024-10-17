@@ -15,13 +15,14 @@ dw-ring -- dw's webring. The goal of this project is to have a backend-first web
 - Static webring welcome text with html support (config)
 - Websites are listed with nice cards with thumbnails, buttons and favicons
 - Favicons and banners are downloaded from the URLs in the config, so they will load even if a site is down
-- Passing `--gen` will download/generate the images
+- Using `src/dlassets.js` will download/generate the images
 - Passing `--overwrite` will overwrite previously downloaded files
 - The ability to use an iframe
 - The ability to also use manual links, the bare minimum being prev/next links
 - The skipping of websites that are down or misconfigured
 - Offline websites get a "search on archive.org" link
 - The iframe will warn you if you misspell the slug
+- Easy hosting with docker
 
 ### Redirections
 
