@@ -10,6 +10,7 @@ const websites = config.websites
 const desc = config.desc
 const permalink = config.permalink
 const copyright = config.copyright
+const startYear = config.startYear
 const track = config.track
 
 const findAvailableIndexAdjacent = require('../lib/findAvailableIndexAdjacent')
@@ -108,6 +109,7 @@ router.get('/redirect', async (req, res) => {
             version,
             permalink,
             copyright,
+            startYear,
             track,
             error: `
                 <h3>Possible reasons for this error:</h3>
@@ -118,7 +120,8 @@ router.get('/redirect', async (req, res) => {
                     <li>You're severely retarded and discovered a new way to fuck up.</li>
                 </ul>
             `,
-            desc
+            desc,
+            path: null
         })
     }
 })
@@ -131,6 +134,7 @@ async function sendBrickedWebring(res) {
         permalink,
         startTime,
         copyright,
+        startYear,
         track,
         error: `
             <h3>Possible reasons for this error:</h3>
@@ -143,7 +147,8 @@ async function sendBrickedWebring(res) {
             </ul>
             <p>The webring is possibly completely bricked, sorry about that.</p>
         `,
-        desc
+        desc,
+        path: null
     })
 }
 

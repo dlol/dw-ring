@@ -1,6 +1,6 @@
 ## Join DW-RING
 
-If you want to join this Webring [send me an email](mailto:%64%69%6f%77%6f%40%77%61%69%66%75%2e%63%6c%75%62) with:
+If you want to join this Webring [send me an email](mailto:%64%77%40%6b%6f%6e%61%6b%6f%6e%61%2e%6d%6f%65) with:
 
 - Why you want to join my Webring
 - The display name of your site

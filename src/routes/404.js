@@ -30,7 +30,8 @@ router.use(async (req, res) => {
         permalink,
         copyright,
         startYear,
-        track
+        track,
+        path: null
     })
 })
 

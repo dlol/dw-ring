@@ -1,11 +1,11 @@
 <nav>
     <ul>
         <li><a href="/redirect?action=first">←First</a></li>
-        
-        <li><a href="/">Index</a></li>
-        <li><a href="/join">Join</a></li>
-        <li><a href="/help">Help</a></li>
-        <li><a href="/about">About</a></li>
+
+        <li><% if (path === '/') { %>[<% } %><a href="/">Index</a><% if (path === '/') { %>]<% } %></li>
+        <li><% if (path === '/join') { %>[<% } %><a href="/join">Join</a><% if (path === '/join') { %>]<% } %></li>
+        <li><% if (path === '/help') { %>[<% } %><a href="/help">Help</a><% if (path === '/help') { %>]<% } %></li>
+        <li><% if (path === '/about') { %>[<% } %><a href="/about">About</a><% if (path === '/about') { %>]<% } %></li>
 
         <li><a href="/redirect?action=last">Last→</a></li>
     </ul>

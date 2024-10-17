@@ -12,9 +12,13 @@ You can use the `/iframe?website=[YOUR_SLUG]` route and embed it on your website
 
 `<iframe src="[YOUR_PERMALINK]/iframe?website=[YOUR_SLUG]" frameborder="0" height="50" width="280"></iframe>`
 
-<iframe src="/iframe?website=konakona" frameborder="0" height="50" width="280"></iframe>
+<iframe src="/iframe?website=diogo" frameborder="0" height="50" width="280"></iframe>
 
 ^This is what it looks like configured with my site (**konakona.moe**).
+
+<iframe src="/iframe?website=blahblahblahblah" frameborder="0" height="50" width="280"></iframe>
+
+^You will see this if you misstype or aren't on the webring.
 
 <br>
 

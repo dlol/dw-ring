@@ -15,12 +15,13 @@ const startYear = config.startYear
 const desc = config.desc
 const track = config.track
 
-router.get('/about', async (req, res) => {
+
+async function renderMarkdownPage (req, res, fileName) {
     let startTime = Date.now()
 
-    console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') ? req.header('CF-Connecting-IP') : req.ip}]: /about`)
+    console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') || req.ip}]: ${req.url}`)
 
-    let html = marked.parse(fs.readFileSync('README.md', 'utf-8'))
+    let html = marked.parse(fs.readFileSync(fileName, 'utf-8'))
 
     res.render('marked', {
         title,
@@ -31,48 +32,13 @@ router.get('/about', async (req, res) => {
         permalink,
         copyright,
         startYear,
-        track
+        track,
+        path: req.url,
     })
-})
+}
 
-router.get('/help', async (req, res) => {
-    let startTime = Date.now()
-
-    console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') ? req.header('CF-Connecting-IP') : req.ip}]: /about`)
-
-    let html = marked.parse(fs.readFileSync('HELP.md', 'utf-8'))
-
-    res.render('marked', {
-        title,
-        desc,
-        html,
-        startTime,
-        version,
-        permalink,
-        copyright,
-        startYear,
-        track
-    })
-})
-
-router.get('/join', async (req, res) => {
-    let startTime = Date.now()
-
-    console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') ? req.header('CF-Connecting-IP') : req.ip}]: /about`)
-
-    let html = marked.parse(fs.readFileSync('JOIN.md', 'utf-8'))
-
-    res.render('marked', {
-        title,
-        desc,
-        html,
-        startTime,
-        version,
-        permalink,
-        copyright,
-        startYear,
-        track
-    })
-})
+router.get('/about', async (req, res) => renderMarkdownPage(req, res, 'README.md'));
+router.get('/help', async (req, res) => renderMarkdownPage(req, res, 'HELP.md'));
+router.get('/join', async (req, res) => renderMarkdownPage(req, res, 'JOIN.md'));
 
 module.exports = router

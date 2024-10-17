@@ -39,6 +39,7 @@ router.get('/', async (req, res) => {
         startTime,
         track,
         fs,
+        path: req.url,
         getPrettyDate
     })
 })
