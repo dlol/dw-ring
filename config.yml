@@ -5,6 +5,7 @@ copyright: GPLv3
 startYear: 2024
 permalink: https://ring.konakona.moe
 track: ""
+
 long: >-
       ## Welcome
 
@@ -12,6 +13,7 @@ long: >-
       a lot of the issues from simpler frontend-based javascript scripts as it
       checks if websites are online before sending the user there among other
       cool features like automatic thumbnail generation.
+
 websites:
   - name: diogo's website
     slug: diogo
@@ -21,3 +23,168 @@ websites:
     button: https://konakona.moe/88x31/debian-powered.gif
     favicon: https://konakona.moe/favicon.ico
     join: "2024"
+
+marked: # static pages (marked for the parser)
+  - title: Join
+    href: /join
+    body: >-
+      ## Join dw-ring
+
+      If you want to join this Webring [send me an email](mailto:%64%77%40%6b%6f%6e%61%6b%6f%6e%61%2e%6d%6f%65) with:
+
+      - Why you want to join my Webring
+      - The display name of your site
+      - The url of your site
+      - A description that fits the cards (try inspect element)
+      - An optional but encouraged button (88x31 specifically) url
+      - An optional but encouraged favicon url
+
+      <br>
+      <br>
+
+      ## Notice
+
+      Applications are halted for now till further notice. This is for now just a demo.
+
+  - title: Help
+    href: /help
+    body: >-
+      ## Instructions
+
+      dw-ring will automatically verify that your website is online and configured correctly, if any of these fail your site is simply going to be skipped as to not break the ring.
+
+      There are two ways you can "configure" your website to join the webring:
+
+      <br>
+
+      ### Using the iframe
+
+      You can use the `/iframe?website=[YOUR_SLUG]` route and embed it on your website.
+
+      <br><br>
+
+      `<iframe src="[YOUR_PERMALINK]/iframe?website=[YOUR_SLUG]" frameborder="0" height="50" width="280"></iframe>`
+
+      <iframe src="/iframe?website=diogo" frameborder="0" height="50" width="280"></iframe>
+
+      <br>
+
+      <p>^This is what it looks like configured with my site (**konakona.moe**).</p>
+
+      <br>
+
+      <iframe src="/iframe?website=blahblahblahblah" frameborder="0" height="50" width="280"></iframe>
+
+      <br>
+
+      <p>^You will see this if you misstype or aren't on the webring.</p>
+
+      <br>
+
+      <h3>Manually Adding Links</h3>
+
+      <p>If you don't want to use the iframe, you can manually add the <code>next</code> and <code>prev</code> <em>as a bare minimum</em> to your site.</p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?website=[YOUR_SLUG]&action=prev</code></p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?website=[YOUR_SLUG]&action=next</code></p>
+
+      <p>You can also use the "random" action with your website's url on the website param (but you're not obligated to):</p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?website=[YOUR_SLUG]&action=random</code></p>
+
+      <p>And a link to the index of the webring if you'd like.</p>
+
+      <p><code>[YOUR_PERMALINK]/</code></p>
+
+      <blockquote>
+      <b><i>Notes:</i></b>
+      
+      <br>
+
+      <ul>
+      <li><code>[YOUR_SLUG]</code> means your site's "slug" which is simply a string without any special characters, hover over the url of your site in the index to find your site's slug, or ask the owner or something!</li>
+      <li>If your site is not on the Webring (e.g. misspelled <i>slug</i>) you will probably <a href="/redirect">get an error like this</a>. The iframe will also warn you, but this is only possible with the iframe.</li>
+      <li><code>[YOUR_PERMALINK]</code> being the main url for the webring set on the config.</p></i>
+      </ul>
+
+      </blockquote>
+
+      <br>
+
+      <h3>Site Agnostic iframe and Redirections</h3>
+
+      <p>If you are not part of the webring you can still embed the iframe (like the one in the footer), just remove the website param and its value:<p>
+
+      <code>&lt;iframe src="[YOUR_PERMALINK]/iframe" frameborder="0" height="50" width="280"></iframe></code>
+
+      <p>This iframe includes 3 redirections: [<code>first</code>|<code>last</code>|<code>random (w/o checking if it's the same site)</code>] that you can use without it.</p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?action=first</code></p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?action=last</code></p>
+
+      <p><code>[YOUR_PERMALINK]/redirect?action=random</code></p>
+
+  - title: About
+    href: /about
+    body: >-
+      # dw-ring
+
+      *dw-ring is an overengineered webring*
+
+      dw-ring -- dw's webring. The goal of this project is to have a backend-first webring software that is extremely failure tolerant. Most webrings use frontend scripts, they work well, and I totally respect them, but what if someone doesn't want to use JavaScript on their site? Or what if a site goes offline for a bit, maybe the webmaster simply removed the links, thus breaking the webring. This project aims to fix this by employing extreme measures, that are maybe overkill, but that was my goal: make a very failure tolerant webring. Additionally it has a bunch of cool stuff on the frontend, like dynamic thumbnail generation for each site, and the caching of assets instead of hotlinking, and just a bunch of eye-candy.
+
+      ## Features
+
+      ### General
+
+      - Dynamic thumbnail generation with `puppeteer`
+
+      - Dynamic website statuses (alive?, configured?, type of config)
+
+      - Static website descriptions (config)
+
+      - Static website join dates (config)
+
+      - Static webring welcome text with html support (config)
+
+      - Websites are listed with nice cards with thumbnails, buttons and favicons
+
+      - Favicons and banners are downloaded from the URLs in the config, so they will load even if a site is down
+
+      - Using `src/dlassets.js` will download/generate the images
+
+      - Passing `--overwrite` will overwrite previously downloaded files
+
+      - The ability to use an iframe
+
+      - The ability to also use manual links, the bare minimum being prev/next links
+
+      - The skipping of websites that are down or misconfigured
+
+      - Offline websites get a "search on archive.org" link
+
+      - The iframe will warn you if you misspell the slug
+
+      - Easy hosting with docker
+
+      ### Redirections
+
+      - **/redirect?website=[SLUG]&action=next**: Will redirect you to the next working website
+
+      - **/redirect?website=[SLUG]&action=prev**: Will redirect you to the previous working website
+
+      - **/redirect?website=[SLUG]&action=random**: Will redirect you to a random working website different from the one specified in the website param
+
+      - **/redirect?action=random**: Will redirect you to a random working website
+
+      - **/redirect?action=first**: Will redirect you to the first available website
+
+      - **/redirect?action=last**: Will redirect you to the last available website
+
+      ### iframe
+
+      - **/iframe**: Will render an iframe with `[first|last|random w/o check]` buttons
+
+      - **/iframe?website=[SLUG]**: Will render an iframe with `[prev|next|random w/ check]` buttons

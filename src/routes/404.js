@@ -12,6 +12,7 @@ const permalink = config.permalink
 const copyright = config.copyright
 const startYear = config.startYear
 const track = config.track
+const staticPages = config.marked
 
 router.use(async (req, res) => {
     console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') ? req.header('CF-Connecting-IP') : req.ip}]: ${req.originalUrl} --> 404`)
@@ -31,7 +32,8 @@ router.use(async (req, res) => {
         copyright,
         startYear,
         track,
-        path: null
+        path: null,
+        staticPages
     })
 })
 

@@ -14,14 +14,15 @@ const copyright = config.copyright
 const startYear = config.startYear
 const desc = config.desc
 const track = config.track
+const staticPages = config.marked
 
 
-async function renderMarkdownPage (req, res, fileName) {
+async function renderMarkdownPage (req, res, body) {
     let startTime = Date.now()
 
     console.log(`${getPrettyDate(new Date())}: [${req.header('CF-Connecting-IP') || req.ip}]: ${req.url}`)
 
-    let html = marked.parse(fs.readFileSync(fileName, 'utf-8'))
+    let html = marked.parse(body)
 
     res.render('marked', {
         title,
@@ -34,11 +35,12 @@ async function renderMarkdownPage (req, res, fileName) {
         startYear,
         track,
         path: req.url,
+        staticPages
     })
 }
 
-router.get('/about', async (req, res) => renderMarkdownPage(req, res, 'README.md'));
-router.get('/help', async (req, res) => renderMarkdownPage(req, res, 'HELP.md'));
-router.get('/join', async (req, res) => renderMarkdownPage(req, res, 'JOIN.md'));
+for (const page of staticPages) {
+    router.get(page.href, async (req, res) => renderMarkdownPage(req, res, page.body))
+}
 
 module.exports = router

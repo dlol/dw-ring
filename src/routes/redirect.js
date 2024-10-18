@@ -12,6 +12,7 @@ const permalink = config.permalink
 const copyright = config.copyright
 const startYear = config.startYear
 const track = config.track
+const staticPages = config.marked
 
 const findAvailableIndexAdjacent = require('../lib/findAvailableIndexAdjacent')
 const findAvailableIndexExtreme = require('../lib/findAvailableIndexExtreme')
@@ -121,7 +122,8 @@ router.get('/redirect', async (req, res) => {
                 </ul>
             `,
             desc,
-            path: null
+            path: null,
+            staticPages
         })
     }
 })
@@ -148,7 +150,8 @@ async function sendBrickedWebring(res) {
             <p>The webring is possibly completely bricked, sorry about that.</p>
         `,
         desc,
-        path: null
+        path: null,
+        staticPages
     })
 }
 

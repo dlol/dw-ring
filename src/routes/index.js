@@ -17,6 +17,7 @@ const startYear = config.startYear
 const desc = config.desc
 const long = marked.parse(config.long)
 const track = config.track
+const staticPages = config.marked
 
 router.get('/', async (req, res) => {
     let websitesStatus = await websiteCheckAll(websites)
@@ -40,6 +41,7 @@ router.get('/', async (req, res) => {
         track,
         fs,
         path: req.url,
+        staticPages,
         getPrettyDate
     })
 })

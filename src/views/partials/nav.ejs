@@ -2,10 +2,13 @@
     <ul>
         <li><a href="/redirect?action=first">←First</a></li>
 
-        <li><% if (path === '/') { %>[<% } %><a href="/">Index</a><% if (path === '/') { %>]<% } %></li>
-        <li><% if (path === '/join') { %>[<% } %><a href="/join">Join</a><% if (path === '/join') { %>]<% } %></li>
-        <li><% if (path === '/help') { %>[<% } %><a href="/help">Help</a><% if (path === '/help') { %>]<% } %></li>
-        <li><% if (path === '/about') { %>[<% } %><a href="/about">About</a><% if (path === '/about') { %>]<% } %></li>
+        <li><% if (path === '/') { %>[<% } %><a href="/">Index</a><% if (path === '/') { %>]<% } %></li> <!-- Index is always present. -->
+
+        <% for (const page of staticPages) { %>    <!-- This is a mess... [current selected menu] -->
+
+            <li><% if (path === page.href) { %>[<% } %><a href="<%= page.href %>"><%= page.title %></a><% if (path === page.href) { %>]<% } %></li>
+        
+        <% }%>
 
         <li><a href="/redirect?action=last">Last→</a></li>
     </ul>
