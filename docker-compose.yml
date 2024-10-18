@@ -1,6 +1,6 @@
 services:
   dw-ring:
-    image: dw-ring:latest
+    image: ghcr.io/dlol/dw-ring:latest
     container_name: dw-ring
     restart: unless-stopped
     volumes:
